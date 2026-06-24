@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Nytrix Studios | Modern Web Design & Development</title>
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+    body {
+      background: #ffffff;
+      color: #1e1e2f;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* navigation */
+    nav {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 0;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #0d0d2b;
+    }
+    .logo i {
+      color: #6c5ce7;
+      font-size: 2.2rem;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2d44;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #6c5ce7;
+    }
+    .btn-quote {
+      background: #6c5ce7;
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: 0 8px 18px rgba(108,92,231,0.25);
+    }
+    .btn-quote:hover {
+      background: #5a4bd1;
+    }
+    /* hero */
+    .hero {
+      background: linear-gradient(135deg, #f5f3ff 0%, #eef0ff 100%);
+      padding: 70px 0;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 400px;
+    }
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #0b0b2b;
+      line-height: 1.2;
+    }
+    .hero-text .slogan {
+      font-size: 1.4rem;
+      color: #4a4a6a;
+      margin: 16px 0 24px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary, .btn-outline {
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      box-shadow: 0 10px 20px rgba(108,92,231,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #6c5ce7;
+      color: #6c5ce7;
+    }
+    .btn-primary:hover { background: #5b4bc4; }
+    .btn-outline:hover { background: #6c5ce7; color: white; }
+    /* sections */
+    section {
+      padding: 70px 0;
+    }
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #12122e;
+    }
+    .section-sub {
+      color: #555577;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+    .grid-3, .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+      transition: 0.25s;
+      border: 1px solid #f0f0f8;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 40px rgba(108,92,231,0.1);
+    }
+    .card i {
+      font-size: 2.3rem;
+      color: #6c5ce7;
+      margin-bottom: 18px;
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .pricing-card {
+      text-align: center;
+      background: #fafaff;
+      border-radius: 24px;
+      padding: 35px 20px;
+      border: 1px solid #e9e9f5;
+    }
+    .pricing-card.highlight {
+      background: white;
+      border: 2px solid #6c5ce7;
+      box-shadow: 0 20px 35px rgba(108,92,231,0.12);
+    }
+    .price {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #0d0d2b;
+      margin: 15px 0;
+    }
+    .testimonial-card {
+      background: #f9f9ff;
+      border-radius: 20px;
+      padding: 25px;
+      font-style: italic;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0 16px;
+      border: 1px solid #ddddf0;
+      border-radius: 14px;
+      font-size: 0.95rem;
+      background: white;
+    }
+    form button {
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      padding: 15px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    footer {
+      background: #0d0d2b;
+      color: #ccc;
+      padding: 50px 0 20px;
+    }
+    footer a {
+      color: #bbbbdd;
+      text-decoration: none;
+    }
+    footer h4 {
+      color: white;
+      margin-bottom: 15px;
+    }
+    .social i {
+      font-size: 1.5rem;
+      margin-right: 16px;
+      color: #aaa;
+      transition: 0.2s;
+    }
+    .social i:hover { color: #6c5ce7; }
+    hr {
+      margin: 30px 0 20px;
+      border-color: #2a2a4a;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .hero-text h1 { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fas fa-cube"></i> Nytrix Studios
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#order" class="btn-quote">Get a Quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home / Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>Nytrix Studios</h1>
+        <p class="slogan">Modern websites that elevate your brand.</p>
+        <p style="font-size:1.15rem; margin-bottom:25px; color:#3d3d5c;">Helping businesses establish a professional online presence through modern, affordable, and high-quality websites.</p>
+        <div class="hero-buttons">
+          <a href="#order" class="btn-primary">Get Started</a>
+          <a href="#order" class="btn-outline">Request a Quote</a>
+        </div>
+      </div>
+      <div style="flex:1; text-align:center;">
+        <i class="fas fa-laptop-code" style="font-size:10rem; color:#6c5ce7; opacity:0.7;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p class="section-sub">Who we are and why we build for you.</p>
+      <div class="grid-3">
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Who We Are</h3>
+          <p>Nytrix Studios is a passionate team of designers & developers crafting digital experiences for small businesses and startups.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-bullseye"></i>
+          <h3>Our Mission</h3>
+          <p>Helping businesses establish a professional online presence through modern, affordable, and high-quality websites.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-eye"></i>
+          <h3>Our Vision</h3>
+          <p>To become the go-to web studio for entrepreneurs who value design, speed, and personal support.</p>
+        </div>
+      </div>
+      <div style="margin-top:30px; background:#f4f2ff; padding:24px; border-radius:20px;">
+        <p><strong>Why We Started Nytrix Studios:</strong> We noticed many local businesses struggle with outdated websites. We founded Nytrix to bridge that gap with creativity and technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" style="background:#fcfcff;">
+    <div class="container">
+      <h2>Services</h2>
+      <p class="section-sub">Everything your business needs online.</p>
+      <div class="grid-3">
+        <div class="card"><i class="fas fa-paint-brush"></i><h3>Website Design</h3><p>Custom designs tailored to your brand.</p></div>
+        <div class="card"><i class="fas fa-sync-alt"></i><h3>Website Redesign</h3><p>Modern revamps for existing sites.</p></div>
+        <div class="card"><i class="fas fa-mobile-alt"></i><h3>Mobile-Friendly Websites</h3><p>Responsive on all devices.</p></div>
+        <div class="card"><i class="fas fa-shopping-cart"></i><h3>E-Commerce Websites</h3><p>Sell online with ease.</p></div>
+        <div class="card"><i class="fas fa-search"></i><h3>SEO Setup</h3><p>Built-in search optimization.</p></div>
+        <div class="card"><i class="fas fa-tools"></i><h3>Website Maintenance</h3><p>Ongoing support & updates.</p></div>
+        <div class="card"><i class="fas fa-server"></i><h3>Website Hosting Assistance</h3><p>Help with reliable hosting.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <p class="section-sub">Recent projects & case studies.</p>
+      <div class="grid-3">
+        <div class="card"><i class="fas fa-image" style="font-size:2.5rem;"></i><h3>Demo Websites</h3><p>Live previews available on request.</p></div>
+        <div class="card"><i class="fas fa-desktop"></i><h3>Website Screenshots</h3><p>Clean modern layouts.</p></div>
+        <div class="card"><i class="fas fa-file-alt"></i><h3>Case Studies</h3><p>How we helped local cafes & startups.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" style="background:#f8f7ff;">
+    <div class="container">
+      <h2>Pricing</h2>
+      <p class="section-sub">Transparent packages for every stage.</p>
+      <div class="grid-3">
+        <div class="pricing-card"><h3>Starter</h3><div class="price">$899</div><p>5-page website, basic SEO, mobile-ready</p></div>
+        <div class="pricing-card highlight"><h3>Business</h3><div class="price">$1,799</div><p>10 pages, blog, advanced SEO, maintenance</p></div>
+        <div class="pricing-card"><h3>Premium</h3><div class="price">$2,999</div><p>E-commerce, custom features, priority support</p></div>
+      </div>
+      <p style="text-align:center; margin-top:25px;"><strong>Custom Quotes available for unique projects.</strong></p>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section>
+    <div class="container">
+      <h2>Why Choose Us</h2>
+      <div class="grid-3">
+        <div class="card"><i class="fas fa-gem"></i><h3>Professional Design</h3></div>
+        <div class="card"><i class="fas fa-tag"></i><h3>Affordable Pricing</h3></div>
+        <div class="card"><i class="fas fa-rocket"></i><h3>Fast Delivery</h3></div>
+        <div class="card"><i class="fas fa-mobile"></i><h3>Mobile Optimization</h3></div>
+        <div class="card"><i class="fas fa-heart"></i><h3>Personalized Support</h3></div>
+        <div class="card"><i class="fas fa-microchip"></i><h3>Modern Technology</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="background:#f0f0fa;">
+    <div class="container">
+      <h2>Client Testimonials</h2>
+      <div class="grid-3">
+        <div class="testimonial-card">“Nytrix created our website in under two weeks. Professional and fast!” <br><strong>– Sarah, Bloom Café</strong></div>
+        <div class="testimonial-card">“Affordable and the design exceeded our expectations. Highly recommend.” <br><strong>– Mark, TechStartup</strong></div>
+        <div class="testimonial-card">“They handled everything from hosting to SEO. True partners.” <br><strong>– Elena, Local Boutique</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order a Website (form) -->
+  <section id="order">
+    <div class="container" style="max-width:700px;">
+      <h2>Order a Website</h2>
+      <form id="orderForm">
+        <input type="text" placeholder="Your Name *" required>
+        <input type="email" placeholder="Email *" required>
+        <input type="tel" placeholder="Phone Number">
+        <input type="text" placeholder="Business Name">
+        <input type="text" placeholder="Business Type (e.g., Retail, Tech)">
+        <select>
+          <option>Website Package Selection</option>
+          <option>Starter</option>
+          <option>Business</option>
+          <option>Premium</option>
+          <option>Custom Quote</option>
+        </select>
+        <textarea rows="4" placeholder="Project Description"></textarea>
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="grid-3">
+        <div class="card"><h3>How long does a website take?</h3><p>Typically 7-14 days depending on complexity.</p></div>
+        <div class="card"><h3>How much does a website cost?</h3><p>Starts at $899. Custom quotes available.</p></div>
+        <div class="card"><h3>Do you provide hosting?</h3><p>We assist with hosting setup and recommendations.</p></div>
+        <div class="card"><h3>Can you redesign existing websites?</h3><p>Yes, we specialize in redesigns.</p></div>
+        <div class="card"><h3>Do I need technical knowledge?</h3><p>Not at all. We handle everything.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact" style="background:#fafaff;">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:30px;">
+        <div style="flex:1; min-width:250px;">
+          <p><i class="fas fa-envelope"></i> <strong>Email:</strong> hello@nytrixstudios.com</p>
+          <p><i class="fab fa-discord"></i> <strong>Discord:</strong> nytrix#4242</p>
+          <p><i class="fas fa-clock"></i> <strong>Business Hours:</strong> Mon-Fri 9am-6pm EST</p>
+          <div class="social" style="margin-top:15px;">
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+          </div>
+        </div>
+        <div style="flex:2;">
+          <form>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Email">
+            <textarea rows="3" placeholder="Message"></textarea>
+            <button type="submit" style="width:auto; padding:12px 28px;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><h4>Nytrix Studios</h4><p>Modern web design for your business.</p></div>
+        <div><h4>Links</h4><a href="#">Home</a><br><a href="#about">About</a><br><a href="#services">Services</a></div>
+        <div><h4>More</h4><a href="#portfolio">Portfolio</a><br><a href="#pricing">Pricing</a><br><a href="#contact">Contact</a></div>
+        <div><h4>Legal</h4><a href="#">Privacy Policy</a><br><a href="#">Terms of Service</a></div>
+      </div>
+      <hr>
+      <p style="text-align:center; font-size:0.9rem;">© 2025 Nytrix Studios. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- simple live chat mock & optional interactivity -->
+  <div style="position:fixed; bottom:25px; right:25px; background:#6c5ce7; color:white; width:55px; height:55px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 25px rgba(108,92,231,0.5); cursor:pointer; z-index:99;" onclick="alert('Live chat coming soon! You can reach us via email or Discord.')">
+    <i class="fas fa-comment-dots" style="font-size:1.6rem;"></i>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you! Your website request has been submitted. We will contact you shortly.');
+      this.reset();
+    });
+    // smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === "#") return;
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
